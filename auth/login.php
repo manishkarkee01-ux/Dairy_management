@@ -75,4 +75,53 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
 ?>
 
+<!Doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dairy Management System</title>
+        <link rel="stylesheet" href="../assets/css/style.css">
+    </head>
+    <body>
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <h1>Dairy Management System</h1>
+                    <p>Login to your account</p>
+                </div>
+                <?php if ($error !== ""):?>
 
+                    <div class="error-message">
+                        <?php echo htmlspecialchars($error);?>
+                    </div>
+
+                    <?php endif; ?>
+
+                    <form method="POST">
+                        <div class="form-group">
+
+                        <label for="username">
+                            Username/ Farmer ID
+                        </label>
+
+                        <input type="text" id="username" name="username" placeholder="Enter your username">
+                
+                          </div>
+
+                          <div class="form-group">
+                            <label for="password">password</label>
+                            <input type="text" id="password" name="password" placeholder="Enter your password" required>
+    
+                          </div>
+
+                          <button type="submit" class="login-btn">
+                            Login
+                          </button>
+
+
+                    </form>
+            </div>
+        </div>
+    </body>
+</html>
