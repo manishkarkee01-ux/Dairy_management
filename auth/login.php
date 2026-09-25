@@ -5,7 +5,7 @@ require_once "../config/database.php";
 $error="";
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
-    $username=trimp($_POST["username"]??"");
+    $username=trim($_POST["username"]??"");
     $password=$_POST["password"]?? "";
 
     if($username==""|| $password==""){
@@ -16,7 +16,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             FROM admin WHERE username=?
             LIMIT 1"
         );
-        $stmt->bind_param("s",username);
+        $stmt->bind_param("s",$username);
         $stmt->execute();
 
         $result=$stmt->get_result();

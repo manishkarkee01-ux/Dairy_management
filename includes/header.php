@@ -19,7 +19,6 @@ if(session_status()===PHP_SESSION_NONE){
         <span>
             <?php echo htmlspecialchars($_SESSION["role"]?? "Admin"); ?>
         </span>
-
         </div>
 
         <div class="user-avtar">
