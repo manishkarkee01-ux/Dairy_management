@@ -184,11 +184,39 @@ $farmers=$stmt->get_result();
                                             href="edit_farmer.php?id=<?php echo $farmer["farmer_id"];?>"
                                             class="action-btn edit-btn">Edit</a>
 
-                                            
+                                            <?php if ($farmer["status"]==="Active"):?>
+                                                <a 
+                                                href="farmers.php?action=deactivate&id=<?phpecho $farmer["farmer_id"];?>"
+                                                class="action-btn deactivate-btn"
+                                                onclick="return confirm('Deactivate this farmer?');"
+                                                >
+                                            Deactivate 
+                                        </a>
+
+                                        <?php else: ?>
+
+                                            <a 
+                                            href="farmers.php?action=activate&id=<?php echo $farmer["farmer_id"];?>"
+                                            class="action-btn activate-btn">
+                                        Activate
+                                        </a>
+
+                                        <?php endif; ?>
                                         </td>
 
                                         
                                     </tr>
+                                    <?php endwhile; ?>
+                                    <?php else: ?>
+                                        <tr>
+                                            <td
+                                                colspan="7"
+                                                class="empty-state">
+                                                No farmer registered yet.
+                                            </td>
+                                        </tr>
+
+                                        <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
@@ -196,6 +224,7 @@ $farmers=$stmt->get_result();
 
 
         </main>
+        <?php include "../includes/footer.php"; ?>
 
     </div>
 </div>
