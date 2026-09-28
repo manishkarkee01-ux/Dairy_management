@@ -8,6 +8,10 @@ $page_title ="Farmers";
 $message="";
 $error="";
 
+if(isset($_GET["added"]) && $_GET["added"]==="1"){
+    $message="Farmer added successfully.";
+}
+
 if(isset($_GET["action"]) && isset($_GET["id"])){
     $farmer_id=intval($_GET["id"]);
     $action =$_GET["action"];
@@ -72,7 +76,7 @@ $farmers=$stmt->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Farmers- Dairy Management System</title>
 
-    <link rel="stylesheet" href="../assests/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
@@ -145,23 +149,23 @@ $farmers=$stmt->get_result();
                                         </td>
 
                                         <td>
-                                            <?php echo htmlspexialchars($farmer["name"]);?>
+                                            <?php echo htmlspecialchars($farmer["name"]);?>
                     
                                         </td>
                                         <td>
-                                            <?php echo htmlspexialchars($farmer["phone"]);?>
+                                            <?php echo htmlspecialchars($farmer["phone"]);?>
                     
                                         </td>
                                         <td>
-                                            <?php echo htmlspexialchars($farmer["name"]);?>
+                                            <?php echo htmlspecialchars($farmer["name"]);?>
                     
                                         </td>
                                         <td>
-                                            <?php echo htmlspexialchars($farmer["address"]?? "-");?>
+                                            <?php echo htmlspecialchars($farmer["address"]?? "-");?>
                     
                                         </td>
                                         <td>
-                                            <?php echo htmlspexialchars($farmer["email"] ?? "-");?>
+                                            <?php echo htmlspecialchars($farmer["email"] ?? "-");?>
                     
                                         </td>
                                         <td>

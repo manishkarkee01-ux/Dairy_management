@@ -15,9 +15,9 @@
         <span>Dashboard</span>
 </a>
 
-<a href="farmer.php" class="nav-item">
+<a href="farmers.php" class="nav-item">
     <span>♙</span>
-    <span>Farmer</span>
+    <span>Farmers</span>
 </a>
 
 <a href="collection.php" class="nav-item">
