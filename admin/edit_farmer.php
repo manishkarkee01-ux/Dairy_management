@@ -156,10 +156,58 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
                                         <label >Farmer Code</label>
                                         <input type="text" value="<?php echo htmlspecialchars($farmer["farmer_code"]);?>" disabled>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label >Name*</label>
+                                        <input type="text" name="name" value="<?php echo htmlspecialchars($farmer["name"]);?>" required>
+                                    </div>
+                                </div>   
+                                
+                                <div class="form-row">
+                                      <div class="form-group">
+                                        <label >Phone Number</label>
+                                        <input type="text" name="phone" value="<?php echo htmlspecialchars($farmer["phone"]);?>" required >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label >Email</label>
+                                        <input type="email" name ="email" value="<?php echo htmlspecialchars($farmer["email"]??"");?>" required >
+                                    </div>
                                 </div>
+
+                                    <div class="form-group">
+                                        <label >Address</label>
+                                       <textarea name="address"><?php echo htmlspecialchars($farmer["address"]?? "");?></textarea>
+                                    </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label >Status</label>
+                                        <Select name="status">
+                                            <option value="Active" <?php echo $farmer["status"]==="Active"? "selected":"";?>>Active</option>
+
+                                            <option value="Inactive" <?php echo $farmer["status"]==="Inactive"? "selected":"";?>>Inactive</option>
+                                        </Select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label >New Password</label>
+
+                                        <input type="password" name="password" placeholder="Enter new password">
+                                    </div>
+                                </div>
+
+                                <div class="form-action">
+                                    <button type="submit" class=Primary-btn>Update Farmer</button>
+
+                                    <a href="farmers.php" class="secondary-btn">cancel</a>
+                                </div>
+                                
+                                
                             </form>
                         </div>
                 </main>
+
+                <?php include "../includes/footer.php" ?>
             </div>
         </div>
         
