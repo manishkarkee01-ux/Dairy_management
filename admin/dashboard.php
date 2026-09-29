@@ -71,7 +71,7 @@ $page_title = "Dashboard";
                         <h3>
                             <?php
                             $stmt= $conn->prepare(
-                                "SELECT COALESCE(SUM(quantity),0) AS Total
+                                "SELECT COALESCE(SUM(quantity),0) AS total
                                 FROM milk_collections
                                 WHERE collection_date= CURDATE()"
                             );

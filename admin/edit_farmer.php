@@ -16,7 +16,7 @@ if ($farmer_id<=0){
 }
 
 $stmt =$conn->prepare(
-    "SELECT farmer_id, farmer_code, name, phone, address, email, dtatus
+    "SELECT farmer_id, farmer_code, name, phone, address, email, status
     FROM farmers
     WHERE farmer_id=?
     LIMIT 1"
@@ -56,16 +56,15 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
                 PASSWORD_DEFAULT
             );
 
-            $stmt=$conn->prepare(
+            $stmt = $conn->prepare(
                 "UPDATE farmers
                 SET name=?,
                 phone=?,
                 address=?,
                 email=?,
-                status=?
+                status=?,
                 password=?
-                WHERE farmer_id=?
-                "
+                WHERE farmer_id=?"
             );
 
             $stmt->bind_param(
@@ -120,7 +119,7 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Edit Farmer- Dairy Management System</title>
 
-        <link rel="stylesheet" href="../assets/style.css">
+        <link rel="stylesheet" href="../assets/css/style.css">
     </head>
     <body>
         <div class="admin-layout">

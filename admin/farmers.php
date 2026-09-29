@@ -6,11 +6,16 @@ require_once "../config/database.php";
 $page_title ="Farmers";
 
 $message="";
+if(isset($_GET["added"]) && $_GET["added"]=== "1"){
+    $message= "Farmer added successfully.";
+}
+
+if(isset($_GET["updated"]) && $_GET["updated"]=== "1"){
+    $message = "Farmer updated successfully.";
+}
 $error="";
 
-if(isset($_GET["added"]) && $_GET["added"]==="1"){
-    $message="Farmer added successfully.";
-}
+
 
 if(isset($_GET["action"]) && isset($_GET["id"])){
     $farmer_id=intval($_GET["id"]);
@@ -184,28 +189,35 @@ $farmers=$stmt->get_result();
                                         </td>
 
                                         <td>
-                                            <a 
-                                            href="edit_farmer.php?id=<?php echo $farmer["farmer_id"];?>"
-                                            class="action-btn edit-btn">Edit</a>
 
-                                            <?php if ($farmer["status"]==="Active"):?>
-                                                <a 
-                                                href="farmers.php?action=deactivate&id=<?phpecho $farmer["farmer_id"];?>"
-                                                class="action-btn deactivate-btn"
-                                                onclick="return confirm('Deactivate this farmer?');"
+                                            <a
+                                                href="edit_farmer.php?id=<?php echo $farmer["farmer_id"]; ?>"
+                                                class="action-btn edit-btn"
+                                            >
+                                                Edit
+                                            </a>
+
+                                            <?php if ($farmer["status"] === "Active"): ?>
+
+                                                <a
+                                                    href="farmers.php?action=deactivate&id=<?php echo $farmer["farmer_id"]; ?>"
+                                                    class="action-btn deactivate-btn"
+                                                    onclick="return confirm('Deactivate this farmer?');"
                                                 >
-                                            Deactivate 
-                                        </a>
+                                                    Deactivate
+                                                </a>
 
-                                        <?php else: ?>
+                                            <?php else: ?>
 
-                                            <a 
-                                            href="farmers.php?action=activate&id=<?php echo $farmer["farmer_id"];?>"
-                                            class="action-btn activate-btn">
-                                        Activate
-                                        </a>
+                                                <a
+                                                    href="farmers.php?action=activate&id=<?php echo $farmer["farmer_id"]; ?>"
+                                                    class="action-btn activate-btn"
+                                                >
+                                                    Activate
+                                                </a>
 
-                                        <?php endif; ?>
+                                            <?php endif; ?>
+
                                         </td>
 
                                         

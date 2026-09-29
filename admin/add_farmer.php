@@ -74,7 +74,7 @@ if(
 
     if($stmt->execute()){
         header(
-            "Location:farmer.php?added=1"
+            "Location:farmers.php?added=1"
         );
         exit();
     }else{
@@ -86,7 +86,7 @@ if(
 
 ?>
 
-<!DOCTYPE html>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
