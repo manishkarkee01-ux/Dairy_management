@@ -61,7 +61,7 @@ font-size: 14px;
     font-size: 14px;
 }
 
-.font-group input:focus{
+.form-group input:focus{
     border-color: #3b7d5a;
 }
 
@@ -186,7 +186,7 @@ select {font-family:inherit;
 
 .main-content{
     margin-left: 250px;
-    width: calc(100%-250px);
+    width: calc(100% - 250px);
 }
 
 .top-header{
@@ -266,6 +266,7 @@ select {font-family:inherit;
     border: 1px solid #e8e8e8;
     border-radius: 10px;
     padding: 20px;
+    display:flex;
     align-items: center;
     gap:15px;
 }
@@ -296,7 +297,7 @@ select {font-family:inherit;
     color: #d89000;
 }
 
-.prodoct-icon{
+.product-icon{
     background: #f0ebf8;
     color:#7956a8;
 }
@@ -426,7 +427,7 @@ td{
     margin-bottom: 20px;
 }
 
-.form-row .form-card {
+.form-row .form-group {
     flex: 1;
     margin-bottom: 0;
 }
@@ -453,7 +454,7 @@ td{
     border-color: #3b7d5a;
 }
 
-.form-action{
+.form-actions{
     display:flex;
     gap: 10px;
     margin-top: 10px;
@@ -535,7 +536,7 @@ td{
     color: #c0392b;
 }
 
-.activat-btn {
+.activate-btn {
     background: #e9f7ee;
     color:#287a45;
 }
@@ -547,7 +548,7 @@ td{
     }
     .main-content{
         margin-left: 210px;
-        width: calc(100%-210px);
+        width: calc(100% - 210px);
     }
     .form-row{
         flex-direction: column;

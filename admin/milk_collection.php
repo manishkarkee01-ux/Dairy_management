@@ -78,7 +78,8 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
     );
 
     if($stmt->execute()){
-        $success = "Milk collection saved successfully.";
+        header("Location: collection.php?saved=1");
+        exit();
     }else{
         $error="Unable to save milk collection.";
     }
@@ -163,7 +164,7 @@ $farmers= $conn->query(
                         <div class="form-group">
                             <label >Collection Date *</label>
 
-                            <input type="date" name="collection_date" value="<?php data("Y-m-d"); ?>" required>
+                            <input type="date" name="collection_date" value="<?php echo date("Y-m-d"); ?>" required>
                         </div>
 
                         <div class="form-group">

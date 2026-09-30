@@ -3,12 +3,12 @@
 require_once "../includes/auth_admin.php";
 require_once"../config/database.php";
 
-$page_title= "Milk Collection"
+$page_title= "Milk Collection";
 
 $message= "";
 
 if(isset($_GET["saved"]) && $_GET["saved"]=== "1"){
-    $message= "Milk collection saved successfully";
+    $message= "Milk collection saved successfully.";
 }
 
 $stmt = $conn->prepare(
@@ -28,11 +28,11 @@ $stmt = $conn->prepare(
     INNER JOIN farmers f
     ON mc.farmer_id= f.farmer_id
     ORDER BY
-    mc.collection_date DESC
+    mc.collection_date DESC,
     mc.collection_id DESC"
 );
 
-$stmt->ececute();
+$stmt->execute();
 
 $collections= $stmt ->get_result();
 
@@ -91,7 +91,7 @@ $collections= $stmt ->get_result();
 
                             <tbody>
                                 <?php if($collections->num_rows > 0): ?>
-                                    <?php while($row =$collection->fetch_assoc()): ?>
+                                    <?php while($row =$collections->fetch_assoc()): ?>
                                         <tr>
                                             <td>
                                                 <strong><?php echo htmlspecialchars($row["farmer_code"]); ?></strong> <br>
@@ -106,12 +106,35 @@ $collections= $stmt ->get_result();
                                             <td><?php echo number_format($row["rate"],2); ?></td>
                                             <td><strong>NPR<?php echo number_format($row["amount"],2);?></strong></td>
 
+                                            <td><?php if($row["payment_status"]==="Paid"):?>  
+                                            <span class="status-badge status-active">Paid</span>
+                                        <?php else: ?>
+                                        
+                                        <span class="status-badge status-inactive">Unpaid</span>
+                                         <?php endif;?>
+                                        </td>
+
                                         </tr>
+                                        <?php endwhile; ?>
+                                        <?php else: ?>
+
+                                        <tr>
+                                            <td
+                                                colspan="9"
+                                                class="empty-state">
+                                                No milk collection records found.
+                                            </td>
+                                        </tr>
+                                        <?php endif; ?>
+
+
                             </tbody>
                         </table>
                     </div>
                  </div>
             </main>
+
+            <?php include "../includes/footer.php"; ?>
         </div>
     </div>
     
