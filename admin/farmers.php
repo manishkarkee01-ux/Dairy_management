@@ -161,10 +161,7 @@ $farmers=$stmt->get_result();
                                             <?php echo htmlspecialchars($farmer["phone"]);?>
                     
                                         </td>
-                                        <td>
-                                            <?php echo htmlspecialchars($farmer["name"]);?>
-                    
-                                        </td>
+                                   
                                         <td>
                                             <?php echo htmlspecialchars($farmer["address"]?? "-");?>
                     
