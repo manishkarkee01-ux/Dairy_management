@@ -91,7 +91,7 @@ $payments = $stmt->get_result();
                             <?php if($payments->num_rows > 0): ?>
 
                                 <?php while (
-                                    $payment = $payment->fetch_assoc()
+                                    $payment = $payments->fetch_assoc()
                                 ): ?>
                                 <tr>
                                     <td><?php echo htmlspecialchars($payment["payment_id"]); ?></td>
