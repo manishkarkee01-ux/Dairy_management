@@ -49,7 +49,7 @@ $payments = $stmt->get_result();
     <div class="main-content">
         <?php include "../includes/header.php"; ?>
 
-        <main class="dashboard=content">
+        <main class="dashboard-content">
             <div class="page-header">
 
             <div>

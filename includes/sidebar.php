@@ -31,6 +31,12 @@
 
 </a>
 
+<a href="products.php" class="nav-item">
+    <span>📦</span>
+    <span>Products</span>
+
+</a>
+
 <a href="inventory.php" class="nav-item">
     <span>▤</span>
     <span>Inventory</span>
