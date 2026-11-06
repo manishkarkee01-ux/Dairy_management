@@ -65,6 +65,7 @@ $products= $stmt->get_result();
                         <th>Unit</th>
                         <th>Quantity</th>
                         <th>Minimum Stock</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -93,6 +94,25 @@ $products= $stmt->get_result();
 
                                 <td>
                                     <?php echo number_format($product["minimum_stock"], 2); ?>
+
+                                </td>
+
+                                <td>
+                                    <?php if (
+                                        $product["quantity"] <= $product["minimum_stock"]
+                                    ): ?>
+
+                                        <span class="status-inactive">
+                                            Low Stock
+                                        </span>
+
+                                    <?php else: ?>
+
+                                        <span class="status-active">
+                                            Available
+                                        </span>
+
+                                    <?php endif; ?>
                                 </td>
 
                                 <td>
@@ -109,7 +129,7 @@ $products= $stmt->get_result();
                         <?php endwhile; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="6"> No product found.</td>
+                            <td colspan="7"> No product found.</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>
