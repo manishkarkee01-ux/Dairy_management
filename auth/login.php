@@ -15,6 +15,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             "SELECT admin_id, name, username, password, role
             FROM admin WHERE username=?
             LIMIT 1"
+
         );
         $stmt->bind_param("s",$username);
         $stmt->execute();
@@ -31,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 $_SESSION["user_type"]="admin";
 
                 header("location:../admin/dashboard.php");
-                exist();
+                exit();
             }
             else{
                 $error="invalid username or password.";
@@ -54,11 +55,14 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             if($result->num_rows===1){
                 $farmer = $result->fetch_assoc();
 
-                if(password_verify($password,$farmer["farmer_id"])){
-                    $SESSION["user_id"]=$farmer["farmer_id"];
-                    $SESSION["user_name"]=$farmer["name"];
-                    $SESSION["farmer_code"]=$farmer["farmer_code"];
-                    $SESSION["user_type"]= "farmer";
+                if(password_verify($password,$farmer["password"])){
+                    session_regenerate_id(true); 
+                    
+                    $_SESSION["user_id"]=$farmer["farmer_id"];
+                    $_SESSION["farmer_id"] = $farmer["farmer_id"]; 
+                    $_SESSION["user_name"]=$farmer["name"];
+                    $_SESSION["farmer_code"]=$farmer["farmer_code"];
+                    $_SESSION["user_type"]= "farmer";
 
                     header("Location: ../farmer/dashboard.php");
                     exist();
@@ -111,7 +115,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
                           <div class="form-group">
                             <label for="password">password</label>
-                            <input type="text" id="password" name="password" placeholder="Enter your password" required>
+                            <input type="password" id="password" name="password" placeholder="Enter your password" required>
     
                           </div>
 
